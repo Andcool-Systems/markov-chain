@@ -10,6 +10,9 @@ for line in lines:
     words = line.split(' ')
     for i in range(len(words) - 1):
         v = re.sub(r'\\?n$', '',  words[i + 1])
+        if v in dict_words.get(words[i], []):
+            continue
+
         if words[i] not in dict_words:
             dict_words[words[i]] = [v]
         elif v not in dict_words[words[i]]:
